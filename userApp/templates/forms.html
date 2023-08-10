@@ -1,0 +1,79 @@
+
+{% extends "master.html" %}
+{% load static %}
+{% block title %}User Form{% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" type="text/css" href="{% static 'forms.css' %}"
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="cards">
+        <div class="card">
+            <div class="card1">
+                <form id="logs" method='post' action='signin/'>
+                    <h3>Sign In</h3>
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="User Name" id="user_name" name='username'>
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Password" id="password2" name='password'>
+                    <button type="submit">Log In</button>
+                    <button onclick="test(event)">new user</button>
+                </form>
+            </div>
+
+            <div class="card2">
+                <form id="reg" method='post' action='sigup/'>
+                    <h3>Sign Up</h3>
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="User Name" id="username" name="username">
+                    <label for="Email">Email</label>
+                    <input type="email" placeholder="Email Address" id="email" name="email">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Password" id="password" name="password">
+                    <button type="submit">reg</button>
+                    <button onclick="test(event)">Have account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://kit.fontawesome.com/a50253de37.js" crossorigin="anonymous"></script>
+    <script>
+        const card = document.querySelector('.card');
+        const test = (event) => {
+            event.preventDefault();
+            card.classList.toggle('active')
+        };
+
+        // document.getElementById('reg').addEventListener('submit', async (event) =>{
+        //     event.preventDefault()
+        //     const username = document.getElementById('username')
+        //     const data = {
+        //         "username":document.getElementById('username').value,
+        //         "email":document.getElementById('email').value,
+        //         "password": document.getElementById('password').value
+        //     };
+        //     const res = await fetch('signup',{
+        //         method:"POST",
+        //         headers:{
+        //             "Content-Type":"application/json"
+        //         },
+        //         body:JSON.stringify(data)
+        //     });
+        //     console.log(res)
+        // })
+        const handleSubmit = async (event) =>{
+            event.preventDefaults()
+            try{
+                const username = document.regform.username;
+                alert(username)
+            }catch(error){
+                console.log(error)
+                //alert('an error occured')
+            }
+        }
+    </script>
+{% endblock %}
